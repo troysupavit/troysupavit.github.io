@@ -142,7 +142,7 @@ function populateLists(cfg) {
       .map(([k, v]) => linkItem(k, v));
     linkRow.innerHTML = items.join('');
   }
-  const contactRow = document.getElementById('cfg-contact');
+  const contactRow = document.getElementById('cfg-email');
   if (contactRow) {
     contactRow.innerHTML = cfg.email ? linkItem('email', `mailto:${cfg.email}`, cfg.email) : '';
   }

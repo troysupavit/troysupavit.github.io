@@ -407,6 +407,7 @@ a:hover {
 .hero-image {
     display: flex;
     justify-content: center;
+    align-self: start;
 }
 
 .image-frame {
@@ -772,19 +773,6 @@ a:hover {
    Contact
    ======================================== */
 
-.contact-content {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.contact-intro {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    margin-bottom: var(--space-xl);
-    line-height: 1.8;
-}
-
 .contact-links {
     display: flex;
     flex-wrap: wrap;
@@ -796,6 +784,10 @@ a:hover {
    Declared after .contact-links so it wins at equal specificity. */
 .hero-links {
     justify-content: flex-start;
+}
+
+/* Email row sits between the roles and the bio, so it needs space below. */
+.hero-email {
     margin-bottom: var(--space-xl);
 }
 
