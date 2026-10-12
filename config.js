@@ -31,22 +31,7 @@ const USER_CONFIG = {
   },
 
   publications: [
-    {
-      year:     2025,
-      title:    "Your Paper Title Here",
-      authors:  "Your Name, Co-Author 1, Co-Author 2",
-      venue:    "Conference / Journal Name 2025",
-      links:    { pdf: "#", code: "#" },
-      abstract: "A brief summary of your paper's contributions and findings.",
-    },
-    {
-      year:     2024,
-      title:    "Another Paper Title",
-      authors:  "Your Name, Co-Author 1",
-      venue:    "Conference / Journal Name 2024",
-      links:    { pdf: "#" },
-      abstract: "",
-    },
+    
   ],
 
   projects: [

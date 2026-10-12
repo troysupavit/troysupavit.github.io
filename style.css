@@ -6,22 +6,23 @@
 
 :root {
     /* Light Theme - Classic Print */
-    --bg-primary: #fdfcfa;
-    --bg-secondary: #f7f5f0;
-    --bg-tertiary: #edeae3;
+    --bg-primary: #f7faf9;
+    --bg-secondary: #eff5f4;
+    --bg-tertiary: #e6eeed;
     --bg-card: #ffffff;
 
     --text-primary: #1a1a1a;
     --text-secondary: #3d3d3d;
     --text-muted: #6b6b6b;
 
-    --accent-primary: #8b0000;
-    --accent-secondary: #a52a2a;
-    --accent-tertiary: #c9a227;
-    --accent-gradient: linear-gradient(135deg, #8b0000 0%, #c9a227 100%);
+    --accent-primary: #0f5257;
+    --accent-secondary: #14746f;
+    --accent-tertiary: #2a9d8f;
+    --accent-gradient: linear-gradient(135deg, #0f5257 0%, #2a9d8f 100%);
+    --accent-glow: rgba(15, 82, 87, 0.3);
 
-    --border-color: #d4d0c8;
-    --border-hover: #b8b4ac;
+    --border-color: #d3e0de;
+    --border-hover: #b4c8c5;
 
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
     --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
@@ -59,17 +60,24 @@
 
 /* Dark Theme - Evening Reading */
 [data-theme="dark"] {
-    --bg-primary: #1c1b19;
-    --bg-secondary: #252420;
-    --bg-tertiary: #2e2d28;
-    --bg-card: #232220;
+    --bg-primary: #0f1a19;
+    --bg-secondary: #162322;
+    --bg-tertiary: #1d2c2b;
+    --bg-card: #141f1e;
 
-    --text-primary: #f0ede6;
-    --text-secondary: #c4c0b8;
-    --text-muted: #8a8680;
+    --text-primary: #e8f2f0;
+    --text-secondary: #b3cac6;
+    --text-muted: #7e9995;
 
-    --border-color: #3a3835;
-    --border-hover: #4a4845;
+    /* Lighter accent: the light-theme teal is unreadable on a dark bg (1.7:1). */
+    --accent-primary: #5eead4;
+    --accent-secondary: #2dd4bf;
+    --accent-tertiary: #7dd3d0;
+    --accent-gradient: linear-gradient(135deg, #5eead4 0%, #7dd3d0 100%);
+    --accent-glow: rgba(94, 234, 212, 0.25);
+
+    --border-color: #2a3d3b;
+    --border-hover: #3d5452;
 }
 
 /* ========================================
@@ -759,6 +767,19 @@ a:hover {
     gap: var(--space-md);
 }
 
+/* Hero link row: left-aligned to match the hero text on desktop.
+   Declared after .contact-links so it wins at equal specificity. */
+.hero-links {
+    justify-content: flex-start;
+}
+
+/* Below 1024px the hero text centers, so the links center with it. */
+@media (max-width: 1024px) {
+    .hero-links {
+        justify-content: center;
+    }
+}
+
 .contact-item {
     display: flex;
     align-items: center;
@@ -1204,7 +1225,7 @@ a:hover {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
+    box-shadow: 0 4px 12px var(--accent-glow);
 }
 
 /* Contact item hover */

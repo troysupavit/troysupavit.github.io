@@ -88,7 +88,57 @@ function boldName(authors, name) {
   return authors.replace(name, `<strong>${name}</strong>`);
 }
 
+const LINK_META = {
+  linkedin: { label: 'LinkedIn', icon: 'linkedin' },
+  scholar:  { label: 'Scholar',  icon: 'scholar' },
+  github:   { label: 'GitHub',   icon: 'github' },
+  cv:       { label: 'CV',       icon: 'cv' },
+  email:    { label: 'Email',    icon: 'email' },
+};
+
+const LINK_ICONS = {
+  linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
+  scholar:  '<path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3z"/><path d="M5 13v4c0 1.7 3.1 3 7 3s7-1.3 7-3v-4l-7 3.8L5 13z"/>',
+  github:   '<path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/>',
+  cv:       '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6"/>',
+  email:    '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/>',
+};
+
+function linkItem(key, href, text) {
+  const meta = LINK_META[key] || { label: key.charAt(0).toUpperCase() + key.slice(1), icon: 'email' };
+  const icon = LINK_ICONS[meta.icon] || LINK_ICONS.email;
+  // Open in a new tab for anything that leaves the page: absolute URLs and
+  // relative files (e.g. assets/cv.pdf). Stay put for in-page anchors and
+  // mailto:/tel:, which should not spawn a tab.
+  const inPage = /^#/i.test(href) || /^(mailto|tel):/i.test(href);
+  const attrs = inPage ? '' : ' target="_blank" rel="noopener noreferrer"';
+  return `<a class="contact-item" href="${href}"${attrs}>` +
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icon}</svg>` +
+    `<span>${text ? escapeHtml(text) : escapeHtml(meta.label)}</span></a>`;
+}
+
+// Hide a section (and its nav link) when it has no config content,
+// so an empty list doesn't leave a stray heading behind.
+function hideIfEmpty(sectionId, items) {
+  if (items?.length) return false;
+  const section = document.getElementById(sectionId);
+  if (section) section.remove();
+  document.querySelectorAll(`.nav-links a[href="#${sectionId}"]`).forEach(a => a.remove());
+  return true;
+}
+
 function populateLists(cfg) {
+  const linkRow = document.getElementById('cfg-links');
+  if (linkRow) {
+    const items = Object.entries(cfg.links || {})
+      .filter(([, v]) => v)
+      .map(([k, v]) => linkItem(k, v));
+    linkRow.innerHTML = items.join('');
+  }
+  const contactRow = document.getElementById('cfg-contact');
+  if (contactRow) {
+    contactRow.innerHTML = cfg.email ? linkItem('email', `mailto:${cfg.email}`, cfg.email) : '';
+  }
   const statRow = document.getElementById('cfg-stats');
   if (statRow && cfg.stats?.length) {
     statRow.innerHTML = cfg.stats.map(s => `
@@ -98,6 +148,7 @@ function populateLists(cfg) {
       </div>`).join('');
   }
   const pubList = document.getElementById('cfg-publications');
+  hideIfEmpty('publications', cfg.publications);
   if (pubList && cfg.publications?.length) {
     pubList.innerHTML = cfg.publications.map(p => `
       <article class="pub-card" data-year="${p.year}">
