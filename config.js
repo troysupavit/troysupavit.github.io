@@ -6,10 +6,11 @@
 const USER_CONFIG = {
   name:       "Supavit (Troy) Pitaknarongphorn",
   initials:   "SP",
-  role:       "PhD Applicant",
-  university: "",
+  roles: [
+    { role: "PhD Applicant", university: "" },
+    { role: "Master's Student, M.S. Information Technology - Information Security", university: "Carnegie Mellon University" }
+  ],
   email:      "spitakna@andrew.cmu.edu",
-  // Each array item is rendered as its own <p> — one entry per paragraph.
   bio: [
     "Hi, I’m Troy, a master’s student in Information Technology - Information Security, Cyber Forensics and Incident Response track at Carnegie Mellon University (CMU). I earned my B.S. in Computer Science and Engineering, Entrepreneurship minor, from the University of California, Los Angeles (UCLA).",
     "My interests lie at the intersection of cybersecurity, cybercrime, and artificial intelligence, with a focus on understanding and preventing online fraud, scams, and phishing attacks. I am particularly interested in how cyberattacks exploit human vulnerabilities and how we can develop effective systems to detect, investigate, and prevent these threats.",

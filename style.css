@@ -287,6 +287,31 @@ a:hover {
     letter-spacing: -0.02em;
 }
 
+.hero-roles {
+    margin-bottom: var(--space-xl);
+}
+
+.hero-role {
+    margin-bottom: var(--space-lg);
+}
+
+.hero-role:last-child {
+    margin-bottom: 0;
+}
+
+.hero-roles .hero-title {
+    display: block;
+    margin-bottom: var(--space-xs);
+}
+
+.hero-role-org {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    padding-left: calc(var(--space-md) + 3px);
+}
+
 .hero-title {
     font-family: var(--font-body);
     font-size: 1.1rem;
@@ -771,6 +796,7 @@ a:hover {
    Declared after .contact-links so it wins at equal specificity. */
 .hero-links {
     justify-content: flex-start;
+    margin-bottom: var(--space-xl);
 }
 
 /* Below 1024px the hero text centers, so the links center with it. */

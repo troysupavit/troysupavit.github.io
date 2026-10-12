@@ -48,10 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function populateSimpleFields(cfg) {
   document.querySelectorAll('[data-config]').forEach(el => {
     const key = el.dataset.config;
-    if (key === 'role_university') el.textContent = roleLine(cfg.role, cfg.university);
-    else if (key === 'bio') el.innerHTML = bioToHtml(cfg.bio);
+    if (key === 'bio') el.innerHTML = bioToHtml(cfg.bio);
     else if (cfg[key] !== undefined) el.textContent = cfg[key];
   });
+  const roleRow = document.getElementById('cfg-roles');
+  if (roleRow) roleRow.innerHTML = rolesToHtml(cfg.roles);
   if (cfg.name) document.title = `${cfg.name} | Academic Homepage`;
   if (cfg.photo) {
     const av = document.querySelector('.image-placeholder, .hero-photo');
@@ -59,13 +60,19 @@ function populateSimpleFields(cfg) {
   }
 }
 
-// "Role at University" — drops the "at ..." half when university is blank.
-function roleLine(role, university) {
-  const r = (role || '').trim();
-  const u = (university || '').trim();
-  if (!r) return u;
-  if (!u) return r;
-  return `${r} at ${u}`;
+// One block per role: role on its own line, university beneath it.
+function rolesToHtml(roles) {
+  const list = Array.isArray(roles) ? roles : (roles ? [roles] : []);
+  return list
+    .map(r => {
+      const role = String(r?.role ?? '').trim();
+      const university = String(r?.university ?? '').trim();
+      if (!role && !university) return '';
+      const org = university ? `<span class="hero-role-org">${escapeHtml(university)}</span>` : '';
+      return `<div class="hero-role"><span class="hero-title">${escapeHtml(role)}</span>${org}</div>`;
+    })
+    .filter(Boolean)
+    .join('');
 }
 
 // Accepts an array of paragraphs, or a plain string (blank line = paragraph break).
