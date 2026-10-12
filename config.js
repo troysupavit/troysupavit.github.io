@@ -75,7 +75,7 @@ const USER_CONFIG = {
       role:        "Research Assistant",
       institution: "UCLA Security & Privacy Lab",
       description: "Investigate security and vulnerability of VR/AR assets, and their imapct on implemented applications.",
-      links:       {},
+      links:       {discussion_ppt: "assets/UCLA_research_litrev_ppt.pdf"},
     },
     {
       period:      "2022",
