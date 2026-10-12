@@ -38,11 +38,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Prevent placeholder href="#" links from scrolling to top
 document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
 
+// Stripe sections by rendered order rather than hardcoded classes, so the
+// alternation stays correct when a section is hidden for having no content.
+// Even index = tinted band, so the first section starts tinted.
+function alternateSectionBackgrounds() {
+  document.querySelectorAll('section.section').forEach((sec, i) => {
+    sec.classList.toggle('section-alt', i % 2 === 0);
+  });
+}
+
 // ── Config Population ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof USER_CONFIG === 'undefined') return;
   populateSimpleFields(USER_CONFIG);
   populateLists(USER_CONFIG);
+  alternateSectionBackgrounds();
   openLinksInNewTab();
 });
 
@@ -67,6 +77,8 @@ function populateSimpleFields(cfg) {
   });
   const roleRow = document.getElementById('cfg-roles');
   if (roleRow) roleRow.innerHTML = rolesToHtml(cfg.roles);
+  const year = document.getElementById('footer-year');
+  if (year) year.textContent = new Date().getFullYear();
   if (cfg.name) document.title = `${cfg.name} | Academic Homepage`;
   if (cfg.photo) {
     const av = document.querySelector('.image-placeholder, .hero-photo');
@@ -145,18 +157,13 @@ function hideIfEmpty(sectionId, items) {
   return true;
 }
 
-// Education / Research / Experience share one layout: a dated list where each
-// row shows a title (degree or role) and the institution beneath it.
-function renderTimeline(sectionId, items, titleKey) {
-  const list = items || [];
-  hideIfEmpty(sectionId, list);
-  const row = document.getElementById(`cfg-${sectionId}`);
-  if (!row || !list.length) return;
-  row.innerHTML = list.map(i => {
-    const description = i.description ?? i.desc ?? '';
-    const links = Object.entries(i.links || {})
-      .map(([k, v]) => `<a href="${v}" class="project-link">${k.toUpperCase()}</a>`).join('');
-    return `
+// One timeline row: period, title (degree or role), institution,
+// then the optional description and links.
+function timelineItem(i, titleKey) {
+  const description = i.description ?? i.desc ?? '';
+  const links = Object.entries(i.links || {})
+    .map(([k, v]) => `<a href="${v}" class="project-link">${k.toUpperCase()}</a>`).join('');
+  return `
       <div class="exp-item">
         <div class="exp-period">${escapeHtml(i.period ?? '')}</div>
         <div class="exp-details">
@@ -166,7 +173,38 @@ function renderTimeline(sectionId, items, titleKey) {
           ${links ? `<div class="project-links">${links}</div>` : ''}
         </div>
       </div>`;
-  }).join('');
+}
+
+function renderTimeline(sectionId, items, titleKey) {
+  const list = items || [];
+  hideIfEmpty(sectionId, list);
+  const row = document.getElementById(`cfg-${sectionId}`);
+  if (!row || !list.length) return;
+  row.innerHTML = list.map(i => timelineItem(i, titleKey)).join('');
+}
+
+// Research and Experience share one section. With both groups present they
+// render as labelled columns; with only one, the list renders flat so there's
+// no sub-heading repeating the section title.
+function renderExperience(cfg) {
+  const groups = [
+    { label: 'Research', items: cfg.research || [] },
+    { label: 'Experience', items: cfg.experience || [] },
+  ].filter(g => g.items.length);
+
+  hideIfEmpty('experience', groups);
+  const row = document.getElementById('cfg-experience');
+  if (!row || !groups.length) return;
+
+  const single = groups.length === 1;
+  row.className = `experience-grid${single ? ' single' : ''}`;
+  row.innerHTML = single
+    ? groups[0].items.map(i => timelineItem(i, 'role')).join('')
+    : groups.map(g => `
+      <div class="exp-category">
+        <h3>${g.label}</h3>
+        ${g.items.map(i => timelineItem(i, 'role')).join('')}
+      </div>`).join('');
 }
 
 function populateLists(cfg) {
@@ -234,6 +272,5 @@ function populateLists(cfg) {
   }).join('');
   }
   renderTimeline('education', cfg.education, 'degree');
-  renderTimeline('research', cfg.research, 'role');
-  renderTimeline('experience', cfg.experience, 'role');
+  renderExperience(cfg);
 }

@@ -41,7 +41,7 @@ const USER_CONFIG = {
     
   ],
 
-  research: [
+  experience: [
     {
       period:      "2026-Present",
       role:        "Master's Thesis",
@@ -54,6 +54,13 @@ const USER_CONFIG = {
       role:        "Research Assistant",
       institution: "CMU Security & AI Research Lab",
       description: "Evaluate the power consumption of VPNs across different VPN configurations, client environments, and server architectures",
+      links:       {},
+    },
+    {
+      period:      "2025",
+      role:        "Teaching Assistant",
+      institution: "UCLA Tech Commercialization",
+      description: "",
       links:       {},
     },
     {
@@ -72,30 +79,29 @@ const USER_CONFIG = {
     },
   ],
 
-  experience: [
-    {
-      period:      "2025",
-      role:        "Teaching Assistant",
-      institution: "UCLA Tech Commercialization",
-      description: "",
-      links:       {},
-    },
-  ],
-
   projects: [
     {
-      date:     "2024",
-      name:     "Project Name",
-      location: "Lab / Organization",
-      desc:     "Brief description of your project and its impact.",
-      links:    { pdf: "#", code: "#" },
+      date:     "2026",
+      name:     "Source Credibility Reasoning In Bodies of Evidence",
+      location: "Honda 99P Lab",
+      desc:     "Finding information is cheap now. Judging it is still hard, and mostly unsolved. Nobody has a good answer for how an agent, starting from zero, could build a body of knowledge it can defend: what to keep, what to trust when sources conflict, and how to notice when something it learned stops being true. Tools like deep search collect; they don't curate, and they don't maintain. That gap between collecting information and establishing trust in it is what we're investigating.",
+      links:    { code: "https://github.com/mcheung2-CMU/cmu-ini-fall-2026" },
     },
   ],
 
   news: [
     { date: "2025.03", badge: "Award", text: "INI Fellowship", },
+    { date: "2025.03", badge: "New", text: "Admitted to CMU!", },
+    { date: "2025.03", badge: "Award", text: "Dean's Honors List", },
+    { date: "2024.12", badge: "Award", text: "Dean's Honors List", },
     { date: "2024.08", badge: "Cert", text: "ISC2 Cybersecurity Certified", links: { pdf: "assets/Isc2_Cybersecurity_Certification.pdf" } },
+    { date: "2022.06", badge: "Award", text: "Dean's Honors List", },
+    { date: "2023.03", badge: "Award", text: "Dean's Honors List", },
+    { date: "2022.06", badge: "Award", text: "Dean's Honors List", },
+    { date: "2022.03", badge: "Award", text: "Dean's Honors List", },
     { date: "2021.06", badge: "Award", text: "Salutatorian", },
-    { date: "2019.03", badge: "Award", text: "CyberPatriot Nationals 2nd Place", links: { Web: "https://troynjrotc.org/infosec2018-2019" } },
+    { date: "2021.03", badge: "New", text: "Admitted to UCLA!", },
+    { date: "2019.03", badge: "Award", text: "CyberPatriot Nationals 2nd Place", links: { web: "https://troynjrotc.org/infosec2018-2019" } },
+    { date: "2017.03", badge: "New", text: "Admitted to Troy Tech Program", },
   ],
 };
