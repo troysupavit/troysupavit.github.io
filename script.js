@@ -134,6 +134,23 @@ function hideIfEmpty(sectionId, items) {
   return true;
 }
 
+// Education / Research / Experience share one layout: a dated list where each
+// row shows a title (degree or role) and the institution beneath it.
+function renderTimeline(sectionId, items, titleKey) {
+  const list = items || [];
+  hideIfEmpty(sectionId, list);
+  const row = document.getElementById(`cfg-${sectionId}`);
+  if (!row || !list.length) return;
+  row.innerHTML = list.map(i => `
+      <div class="exp-item">
+        <div class="exp-period">${escapeHtml(i.period ?? '')}</div>
+        <div class="exp-details">
+          <h4>${escapeHtml(i[titleKey] ?? '')}</h4>
+          <p>${escapeHtml(i.institution ?? '')}</p>
+        </div>
+      </div>`).join('');
+}
+
 function populateLists(cfg) {
   const linkRow = document.getElementById('cfg-links');
   if (linkRow) {
@@ -176,7 +193,7 @@ function populateLists(cfg) {
       <article class="project-card">
         <h3 class="project-title">${p.name}</h3>
         <p class="project-desc">${p.desc}</p>
-        <div class="project-tags">${(p.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="project-links">${Object.entries(p.links||{}).map(([k,v])=>`<a href="${v}" class="project-link">${k.toUpperCase()}</a>`).join('')}</div>
       </article>`).join('');
   }
   const newsList = document.getElementById('cfg-news');
@@ -190,12 +207,7 @@ function populateLists(cfg) {
         </div>
       </div>`).join('');
   }
-  const expGrid = document.getElementById('cfg-experience');
-  if (expGrid) {
-    const edu = cfg.education||[], exp = cfg.experience||[];
-    let html = '';
-    if (edu.length) html += `<div class="exp-category"><h3>Education</h3>${edu.map(e=>`<div class="exp-item"><div class="exp-period">${e.period}</div><div class="exp-details"><h4>${e.degree}</h4><p>${e.institution}</p></div></div>`).join('')}</div>`;
-    if (exp.length) html += `<div class="exp-category"><h3>Experience</h3>${exp.map(e=>`<div class="exp-item"><div class="exp-period">${e.period}</div><div class="exp-details"><h4>${e.role}</h4><p>${e.institution}</p></div></div>`).join('')}</div>`;
-    if (html) expGrid.innerHTML = html;
-  }
+  renderTimeline('education', cfg.education, 'degree');
+  renderTimeline('research', cfg.research, 'role');
+  renderTimeline('experience', cfg.experience, 'role');
 }
