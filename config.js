@@ -26,9 +26,10 @@ const USER_CONFIG = {
 
   links: {
     linkedin: "https://www.linkedin.com/in/supavitpitak/",
-    scholar: "",
-    github:  "https://github.com/troysupavit",
-    cv:      "assets/cv.pdf",
+    scholar:  "",
+    github:   "https://github.com/troysupavit",
+    cv:       "assets/cv.pdf",
+    resume:   "assets/resume.pdf",
   },
 
   education: [
@@ -37,7 +38,14 @@ const USER_CONFIG = {
   ],
 
   publications: [
-    
+    {
+      year:     2025,
+      title:    "Your Paper Title Here",
+      authors:  "Your Name, Co-Author 1, Co-Author 2",
+      venue:    "Conference / Journal Name 2025",
+      links:    { pdf: "#", code: "#" },
+      abstract: "A brief summary of your paper's contributions and findings.",
+    },
   ],
 
   research: [
@@ -45,7 +53,7 @@ const USER_CONFIG = {
       period:      "2026-Present",
       role:        "Master's Thesis",
       institution: "Carnegie Mellon University",
-      description: "Comparing characteristics of human-targeted phishing and AI-targeted prompt injection email to improve detection and prevention system",
+      description: "Compare characteristics of human-targeted phishing and AI-targeted prompt injection email to improve detection and prevention system",
       links:       {},
     },
     {
@@ -59,18 +67,25 @@ const USER_CONFIG = {
       period:      "2024-2025",
       role:        "Research Assistant",
       institution: "UCLA Security & Privacy Lab",
-      description: "Brief description of this research and its impact.",
+      description: "Investigate security and vulnerability of VR/AR assets, and their imapct on implemented applications.",
+      links:       {},
+    },
+    {
+      period:      "2022",
+      role:        "Research Assistant",
+      institution: "Mahidol University",
+      description: "Conducted research on cryptocurrencies, markets, and issues such as 51% attack and impermanent loss",
       links:       {},
     },
   ],
 
   experience: [
     {
-      period:      "2024-2025",
-      role:        "Research Assistant",
-      institution: "UCLA Security & Privacy Lab",
-      description: "Brief description of this role and its impact.",
-      links:       { paper: "#", code: "#" },
+      period:      "2025",
+      role:        "Teaching Assistant",
+      institution: "UCLA Tech Commercialization",
+      description: "",
+      links:       {},
     },
   ],
 
@@ -83,8 +98,8 @@ const USER_CONFIG = {
       links:    { pdf: "#", code: "#" },
     },
   ],
+
   news: [
-    { date: "2025.01", badge: "New",   text: "Paper accepted at Conference 2025!" },
-    { date: "2024.09", badge: "Award", text: "Received fellowship / award." },
+    { date: "2024.08", badge: "Cert", text: "ISC2 Cybersecurity Certified", links: { pdf: "assets/Isc2_Cybersecurity_Certification.pdf" } },
   ],
 };

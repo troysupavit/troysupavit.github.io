@@ -43,7 +43,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof USER_CONFIG === 'undefined') return;
   populateSimpleFields(USER_CONFIG);
   populateLists(USER_CONFIG);
+  openLinksInNewTab();
 });
+
+// Any link that leaves the page opens in a new tab. Run once after rendering
+// so it covers config-driven links and static markup alike.
+// mailto:/tel: are excluded: they open the mail/tel client rather than a page,
+// and spawning a blank tab for them is jarring.
+function openLinksInNewTab() {
+  document.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    if (!href || href.startsWith('#') || /^(mailto|tel):/i.test(href)) return;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+  });
+}
 
 function populateSimpleFields(cfg) {
   document.querySelectorAll('[data-config]').forEach(el => {
@@ -100,6 +114,7 @@ const LINK_META = {
   scholar:  { label: 'Scholar',  icon: 'scholar' },
   github:   { label: 'GitHub',   icon: 'github' },
   cv:       { label: 'CV',       icon: 'cv' },
+  resume:   { label: 'Resume',   icon: 'cv' },
   email:    { label: 'Email',    icon: 'email' },
 };
 
@@ -114,12 +129,8 @@ const LINK_ICONS = {
 function linkItem(key, href, text) {
   const meta = LINK_META[key] || { label: key.charAt(0).toUpperCase() + key.slice(1), icon: 'email' };
   const icon = LINK_ICONS[meta.icon] || LINK_ICONS.email;
-  // Open in a new tab for anything that leaves the page: absolute URLs and
-  // relative files (e.g. assets/cv.pdf). Stay put for in-page anchors and
-  // mailto:/tel:, which should not spawn a tab.
-  const inPage = /^#/i.test(href) || /^(mailto|tel):/i.test(href);
-  const attrs = inPage ? '' : ' target="_blank" rel="noopener noreferrer"';
-  return `<a class="contact-item" href="${href}"${attrs}>` +
+  // target/rel is applied afterwards by openLinksInNewTab().
+  return `<a class="contact-item" href="${href}">` +
     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icon}</svg>` +
     `<span>${text ? escapeHtml(text) : escapeHtml(meta.label)}</span></a>`;
 }
@@ -207,14 +218,20 @@ function populateLists(cfg) {
   }
   const newsList = document.getElementById('cfg-news');
   if (newsList && cfg.news?.length) {
-    newsList.innerHTML = cfg.news.map(n => `
-      <div class="news-item">
-        <span class="news-date">${n.date}</span>
+    newsList.innerHTML = cfg.news.map(n => {
+    const links = Object.entries(n.links || {})
+      .map(([k, v]) => `<a href="${v}" class="project-link">${k.toUpperCase()}</a>`).join('');
+    const linksCol = links ? `<div class="news-links">${links}</div>` : '';
+    return `
+      <div class="news-item${links ? ' has-links' : ''}">
+        <span class="news-date">${escapeHtml(n.date ?? '')}</span>
         <div class="news-content">
-          <span class="news-badge">${n.badge}</span>
-          <span class="news-text">${n.text}</span>
+          <span class="news-badge">${escapeHtml(n.badge ?? '')}</span>
+          <span class="news-text">${escapeHtml(n.text ?? '')}</span>
         </div>
-      </div>`).join('');
+        ${linksCol}
+      </div>`;
+  }).join('');
   }
   renderTimeline('education', cfg.education, 'degree');
   renderTimeline('research', cfg.research, 'role');

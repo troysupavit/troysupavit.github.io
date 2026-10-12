@@ -702,6 +702,18 @@ a:hover {
     border-bottom: 1px solid var(--border-color);
 }
 
+/* Third column holds the link pills, pushed to the right like .pub-links. */
+.news-item.has-links {
+    grid-template-columns: 80px 1fr auto;
+}
+
+.news-links {
+    display: flex;
+    gap: var(--space-sm);
+    align-self: center;
+    white-space: nowrap;
+}
+
 .news-item:last-child {
     border-bottom: none;
 }
@@ -955,6 +967,15 @@ a:hover {
 
     .news-item {
         grid-template-columns: 1fr;
+    }
+
+    /* Links drop to their own row rather than squeezing the news text. */
+    .news-item.has-links {
+        grid-template-columns: 1fr;
+    }
+
+    .news-links {
+        justify-content: flex-start;
     }
 
     .projects-grid {
