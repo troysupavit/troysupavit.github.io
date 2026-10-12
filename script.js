@@ -249,6 +249,7 @@ function populateLists(cfg) {
       <article class="project-card">
         ${p.date ? `<div class="project-date">${escapeHtml(String(p.date))}</div>` : ''}
         <h3 class="project-title">${escapeHtml(p.name ?? '')}</h3>
+        ${p.authors ? `<div class="project-authors">${boldName(p.authors, cfg.name)}</div>` : ''}
         ${p.location ? `<div class="project-location">${escapeHtml(p.location)}</div>` : ''}
         <p class="project-desc">${escapeHtml(p.desc ?? '')}</p>
         <div class="project-links">${Object.entries(p.links||{}).map(([k,v])=>`<a href="${v}" class="project-link">${k.toUpperCase()}</a>`).join('')}</div>

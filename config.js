@@ -38,7 +38,14 @@ const USER_CONFIG = {
   ],
 
   publications: [
-    
+    {
+      year:     2025,
+      title:    "Your Paper Title Here",
+      authors:  "Your Name, Co-Author 1, Co-Author 2",
+      venue:    "Conference / Journal Name 2025",
+      links:    { pdf: "#", code: "#" },
+      abstract: "A brief summary of your paper's contributions and findings.",
+    },
   ],
 
   experience: [
@@ -83,10 +90,35 @@ const USER_CONFIG = {
     {
       date:     "2026",
       name:     "Source Credibility Reasoning In Bodies of Evidence",
+      authors:  "Michael Cheung, Shuaiwei Huang, Supavit Pitaknarongphorn, Miaoyang Ye, Jiacheng Zhang, Dante Cannestra",
       location: "Honda 99P Lab",
       desc:     "Finding information is cheap now. Judging it is still hard, and mostly unsolved. Nobody has a good answer for how an agent, starting from zero, could build a body of knowledge it can defend: what to keep, what to trust when sources conflict, and how to notice when something it learned stops being true. Tools like deep search collect; they don't curate, and they don't maintain. That gap between collecting information and establishing trust in it is what we're investigating.",
       links:    { code: "https://github.com/mcheung2-CMU/cmu-ini-fall-2026" },
     },
+    {
+      date:     "2026",
+      name:     "Secure Skies, Inc. - Cyber Risk Modeling",
+      authors:  "Arturo Bohuchot, Porter Geddes, Viknesh Pathmarajah, Supavit Pitaknarongphorn",
+      location: "CMU Cyber Risk Modeling",
+      desc:     "Conducted a comprehensive cyber risk assessment for Secure Skies, Inc., evaluating CMMC Level 2 compliance against NIST SP 800-171 requirements. Applied MITRE ATT&CK, STRIDE, and FAIR methodologies to identify vulnerabilities, model cyber risks, and estimate potential financial losses. Developed a prioritized 18-month remediation roadmap to strengthen security controls, reduce cyber risk, and improve compliance readiness.",
+      links:    { pdf: "assets/CRM_final_report.pdf", ppt: "assets/CRM_final_ppt.pdf", html: "assets/CRM_final_dashboard.html" },
+    },
+    {
+      date:     "2026",
+      name:     "AI-Assisted Host-Based Forensic Report Generation & Artifact Correlation",
+      authors:  "Aadi Jain, Supavit Pitaknarongphorn, Evan Yu",
+      location: "CMU Host-Based Forensics",
+      desc:     "Developed an AI-assisted digital forensics pipeline to automate host-based forensic report generation and reduce manual investigative effort. Designed an MCP-based architecture connecting LLMs to Autopsy forensic artifacts, enabling structured evidence retrieval and cross-artifact correlation. Explored how generative AI can improve the accuracy, efficiency, and reliability of forensic investigations while mitigating hallucinations and bias.",
+      links:    { ppt: "assets/CMU_HBF_final_ppt.pdf" },
+    },
+    {
+      date:     "2025",
+      name:     "HTTP/2 Protocol Analysis - Encrypted Performance & Packet Forensics",
+      authors:  "Supavit (Troy) Pitaknarongphorn",
+      location: "CMU Network-Based Forensics",
+      desc:     "Authored a network forensics lab that stands up an NGINX server with TLS 1.3 and HTTP/2, captures the resulting encrypted traffic with tshark, and shows why HTTP/2 frames stay invisible inside TLS Application Data. Recovering the session keys through SSL key logging decrypts the capture, revealing multiplexing, HPACK header compression, and frame-level detail in both tshark and Wireshark. Closes by framing why encryption is forcing forensic method to evolve, and why real investigations rarely hold the keys to match it.",
+      links:    { pdf: "assets/CMU_NBF_final_report.pdf" },
+    },    
   ],
 
   news: [

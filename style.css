@@ -588,8 +588,8 @@ a:hover {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-xl);
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
 }
 
 .project-card {
@@ -615,6 +615,13 @@ a:hover {
     font-family: var(--font-display);
     font-size: 1.1rem;
     font-weight: 600;
+    margin-bottom: var(--space-xs);
+}
+
+.project-authors {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
     margin-bottom: var(--space-xs);
 }
 
