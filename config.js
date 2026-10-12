@@ -37,34 +37,52 @@ const USER_CONFIG = {
   ],
 
   publications: [
-    {
-      year:     2025,
-      title:    "Your Paper Title Here",
-      authors:  "Your Name, Co-Author 1, Co-Author 2",
-      venue:    "Conference / Journal Name 2025",
-      links:    { pdf: "#", code: "#" },
-      abstract: "A brief summary of your paper's contributions and findings.",
-    }
+    
   ],
 
   research: [
-    { period: "2026-Present", role: "Master's Thesis", institution: "Carnegie Mellon University" },
-    { period: "2026-Present", role: "Research Assistant", institution: "CMU Security & AI Research Lab" },
-    { period: "2024-2025", role: "Research Assistant", institution: "UCLA Security & Privacy Lab" },
+    {
+      period:      "2026-Present",
+      role:        "Master's Thesis",
+      institution: "Carnegie Mellon University",
+      description: "Comparing characteristics of human-targeted phishing and AI-targeted prompt injection email to improve detection and prevention system",
+      links:       {},
+    },
+    {
+      period:      "2026-Present",
+      role:        "Research Assistant",
+      institution: "CMU Security & AI Research Lab",
+      description: "Evaluate the power consumption of VPNs across different VPN configurations, client environments, and server architectures",
+      links:       {},
+    },
+    {
+      period:      "2024-2025",
+      role:        "Research Assistant",
+      institution: "UCLA Security & Privacy Lab",
+      description: "Brief description of this research and its impact.",
+      links:       {},
+    },
   ],
 
   experience: [
-    { period: "2024-2025", role: "Research Assistant", institution: "UCLA Security & Privacy Lab" },
+    {
+      period:      "2024-2025",
+      role:        "Research Assistant",
+      institution: "UCLA Security & Privacy Lab",
+      description: "Brief description of this role and its impact.",
+      links:       { paper: "#", code: "#" },
+    },
   ],
 
   projects: [
     {
-      name: "Project Name",
-      desc: "Brief description of your project and its impact.",
+      date:     "2024",
+      name:     "Project Name",
+      location: "Lab / Organization",
+      desc:     "Brief description of your project and its impact.",
       links:    { pdf: "#", code: "#" },
     },
   ],
-
   news: [
     { date: "2025.01", badge: "New",   text: "Paper accepted at Conference 2025!" },
     { date: "2024.09", badge: "Award", text: "Received fellowship / award." },

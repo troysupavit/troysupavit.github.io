@@ -141,14 +141,21 @@ function renderTimeline(sectionId, items, titleKey) {
   hideIfEmpty(sectionId, list);
   const row = document.getElementById(`cfg-${sectionId}`);
   if (!row || !list.length) return;
-  row.innerHTML = list.map(i => `
+  row.innerHTML = list.map(i => {
+    const description = i.description ?? i.desc ?? '';
+    const links = Object.entries(i.links || {})
+      .map(([k, v]) => `<a href="${v}" class="project-link">${k.toUpperCase()}</a>`).join('');
+    return `
       <div class="exp-item">
         <div class="exp-period">${escapeHtml(i.period ?? '')}</div>
         <div class="exp-details">
           <h4>${escapeHtml(i[titleKey] ?? '')}</h4>
           <p>${escapeHtml(i.institution ?? '')}</p>
+          ${description ? `<p class="exp-desc">${escapeHtml(description)}</p>` : ''}
+          ${links ? `<div class="project-links">${links}</div>` : ''}
         </div>
-      </div>`).join('');
+      </div>`;
+  }).join('');
 }
 
 function populateLists(cfg) {
@@ -191,8 +198,10 @@ function populateLists(cfg) {
   if (projGrid && cfg.projects?.length) {
     projGrid.innerHTML = cfg.projects.map(p => `
       <article class="project-card">
-        <h3 class="project-title">${p.name}</h3>
-        <p class="project-desc">${p.desc}</p>
+        ${p.date ? `<div class="project-date">${escapeHtml(String(p.date))}</div>` : ''}
+        <h3 class="project-title">${escapeHtml(p.name ?? '')}</h3>
+        ${p.location ? `<div class="project-location">${escapeHtml(p.location)}</div>` : ''}
+        <p class="project-desc">${escapeHtml(p.desc ?? '')}</p>
         <div class="project-links">${Object.entries(p.links||{}).map(([k,v])=>`<a href="${v}" class="project-link">${k.toUpperCase()}</a>`).join('')}</div>
       </article>`).join('');
   }

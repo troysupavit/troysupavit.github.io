@@ -604,11 +604,25 @@ a:hover {
     border-color: var(--accent-primary);
 }
 
+.project-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-primary);
+    margin-bottom: var(--space-xs);
+}
+
 .project-title {
     font-family: var(--font-display);
     font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-xs);
+}
+
+.project-location {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-md);
 }
 
 .project-desc {
@@ -640,6 +654,12 @@ a:hover {
     flex-wrap: wrap;
     gap: var(--space-sm);
     margin-bottom: var(--space-lg);
+}
+
+/* In Research / Experience rows the links sit under a description,
+   so they need separating from it. Scoped to leave project cards as-is. */
+.exp-details .project-links {
+    margin-top: var(--space-md);
 }
 
 .project-link {
@@ -776,9 +796,10 @@ a:hover {
 }
 
 .exp-desc {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-top: var(--space-sm);
 }
 
 /* ========================================
