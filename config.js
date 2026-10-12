@@ -38,14 +38,7 @@ const USER_CONFIG = {
   ],
 
   publications: [
-    {
-      year:     2025,
-      title:    "Your Paper Title Here",
-      authors:  "Your Name, Co-Author 1, Co-Author 2",
-      venue:    "Conference / Journal Name 2025",
-      links:    { pdf: "#", code: "#" },
-      abstract: "A brief summary of your paper's contributions and findings.",
-    },
+    
   ],
 
   research: [
@@ -100,7 +93,9 @@ const USER_CONFIG = {
   ],
 
   news: [
+    { date: "2025.03", badge: "Award", text: "INI Fellowship", },
     { date: "2024.08", badge: "Cert", text: "ISC2 Cybersecurity Certified", links: { pdf: "assets/Isc2_Cybersecurity_Certification.pdf" } },
+    { date: "2021.06", badge: "Award", text: "Salutatorian", },
     { date: "2019.03", badge: "Award", text: "CyberPatriot Nationals 2nd Place", links: { Web: "https://troynjrotc.org/infosec2018-2019" } },
   ],
 };

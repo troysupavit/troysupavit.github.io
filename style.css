@@ -440,7 +440,7 @@ a:hover {
    ======================================== */
 
 .section {
-    padding: var(--space-3xl) var(--space-xl);
+    padding: var(--space-2xl) var(--space-xl);
 }
 
 .section-alt {
@@ -456,7 +456,7 @@ a:hover {
     font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-xl);
     color: var(--text-primary);
     display: flex;
     align-items: center;
@@ -514,7 +514,7 @@ a:hover {
     display: grid;
     grid-template-columns: 60px 1fr;
     gap: var(--space-lg);
-    padding-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -698,7 +698,7 @@ a:hover {
     display: grid;
     grid-template-columns: 80px 1fr;
     gap: var(--space-md);
-    padding: var(--space-md) 0;
+    padding: var(--space-sm) 0;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -779,7 +779,7 @@ a:hover {
 }
 
 .exp-item {
-    padding: var(--space-md) 0;
+    padding: var(--space-sm) 0;
     border-bottom: 1px solid var(--border-color);
 }
 
