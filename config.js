@@ -101,5 +101,6 @@ const USER_CONFIG = {
 
   news: [
     { date: "2024.08", badge: "Cert", text: "ISC2 Cybersecurity Certified", links: { pdf: "assets/Isc2_Cybersecurity_Certification.pdf" } },
+    { date: "2019.03", badge: "Awards", text: "CyberPatriot Nationals 2nd Place", links: { Web: "https://troynjrotc.org/infosec2018-2019" } },
   ],
 };
