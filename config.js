@@ -106,7 +106,7 @@ const USER_CONFIG = {
       name:     "Source Credibility Reasoning In Bodies of Evidence",
       authors:  "Michael Cheung, Shuaiwei Huang, Supavit Pitaknarongphorn, Miaoyang Ye, Jiacheng Zhang, Dante Cannestra",
       location: "Honda 99P Lab",
-      desc:     "Finding information is cheap now. Judging it is still hard, and mostly unsolved. Nobody has a good answer for how an agent, starting from zero, could build a body of knowledge it can defend: what to keep, what to trust when sources conflict, and how to notice when something it learned stops being true. Tools like deep search collect; they don't curate, and they don't maintain. That gap between collecting information and establishing trust in it is what we're investigating.",
+      desc:     "Built a company-strategy monitoring system for business analysts that continuously ingests SEC filings, investor-relations releases, and third-party news for a 24-company watchlist, then surfaces what is new and how credible it is. Architected a multi-source document pipeline that collects 15,000+ filings (~636M characters, FY1993–present) and ~113 news providers across 12 reliability tiers, using a resumable, rate-limit-compliant archive with automated quality auditing and time-ordered replay. Implemented a hierarchical Bayesian truth-discovery model that learns per-source credibility to arbitrate conflicting claims, exposed end-to-end through an MCP server with unified agent-trajectory tracing.",
       links:    { GitHub: "https://github.com/mcheung2-CMU/cmu-ini-fall-2026" },
     },
     {
