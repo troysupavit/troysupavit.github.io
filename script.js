@@ -79,11 +79,27 @@ function populateSimpleFields(cfg) {
   if (roleRow) roleRow.innerHTML = rolesToHtml(cfg.roles);
   const year = document.getElementById('footer-year');
   if (year) year.textContent = new Date().getFullYear();
-  if (cfg.name) document.title = `${cfg.name} | Academic Homepage`;
+  if (cfg.name) populateMeta(cfg);
   if (cfg.photo) {
     const av = document.querySelector('.image-placeholder, .hero-photo');
     if (av) av.innerHTML = `<img src="${cfg.photo}" alt="${cfg.name}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">`;
   }
+}
+
+// Document title and meta tags, all set to "<name> | <siteTitle>",
+// with the name taken from config.js.
+function populateMeta(cfg) {
+  const label = `${cfg.name} | ${(cfg.siteTitle || 'Homepage').trim()}`;
+  document.title = label;
+  setMeta('meta[name="description"]', label);
+  setMeta('meta[property="og:title"]', label);
+  setMeta('meta[property="og:description"]', label);
+}
+
+// Meta tags hold their value in the content attribute, not as text.
+function setMeta(selector, content) {
+  const el = document.querySelector(selector);
+  if (el && content) el.setAttribute('content', content);
 }
 
 // One block per role: role on its own line, university beneath it.

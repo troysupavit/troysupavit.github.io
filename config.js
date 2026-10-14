@@ -6,6 +6,7 @@
 const USER_CONFIG = {
   name:       "Supavit (Troy) Pitaknarongphorn",
   initials:   "SP",
+  siteTitle: "Homepage",
   roles: [
     { role: "PhD Applicant", university: "" },
     { role: "Master's Student, M.S. Information Technology - Information Security", university: "Carnegie Mellon University" }
