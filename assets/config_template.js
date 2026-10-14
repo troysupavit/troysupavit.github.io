@@ -1,4 +1,4 @@
-{
+const USER_CONFIG = {
   roles: [
     { role: "", university: "" },
   ],
