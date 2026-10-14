@@ -197,7 +197,7 @@ const USER_CONFIG = {
     { date: "2025.03", badge: "Award", text: "Dean's Honors List", },
     { date: "2024.12", badge: "Award", text: "Dean's Honors List", },
     { date: "2024.08", badge: "Cert", text: "ISC2 Cybersecurity Certified", links: { pdf: "assets/ISC2_Cybersecurity_Certification.pdf" } },
-    { date: "2022.06", badge: "Award", text: "Dean's Honors List", },
+    { date: "2024.06", badge: "Award", text: "Dean's Honors List", },
     { date: "2023.03", badge: "Award", text: "Dean's Honors List", },
     { date: "2022.06", badge: "Award", text: "Dean's Honors List", },
     { date: "2022.03", badge: "Award", text: "Dean's Honors List", },
