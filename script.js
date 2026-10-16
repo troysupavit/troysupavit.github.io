@@ -233,7 +233,10 @@ function populateLists(cfg) {
   }
   const contactRow = document.getElementById('cfg-email');
   if (contactRow) {
-    contactRow.innerHTML = cfg.email ? linkItem('email', `mailto:${cfg.email}`, cfg.email) : '';
+    // Plain-text mailto link rather than the pill style used by the other links.
+    contactRow.innerHTML = cfg.email
+      ? `<a class="hero-email-text" href="mailto:${escapeHtml(cfg.email)}">${escapeHtml(cfg.email)}</a>`
+      : '';
   }
   const statRow = document.getElementById('cfg-stats');
   if (statRow && cfg.stats?.length) {

@@ -843,6 +843,17 @@ a:hover {
     margin-bottom: var(--space-xl);
 }
 
+/* Email renders as a bare text link, no pill border or background. */
+.hero-email-text {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--accent-primary);
+}
+
+.hero-email-text:hover {
+    text-decoration: underline;
+}
+
 /* Below 1024px the hero text centers, so the links center with it. */
 @media (max-width: 1024px) {
     .hero-links {
