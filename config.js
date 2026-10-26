@@ -270,7 +270,7 @@ const USER_CONFIG = {
       date: "2019.03", 
       badge: "Award", 
       text: "2nd Place CyberPatriot Nationals Finals", 
-      links: { link: "https://troynjrotc.org/infosec2018-2019" } 
+      links: { web: "https://troynjrotc.org/infosec2018-2019" } 
     },
   ],
 };
