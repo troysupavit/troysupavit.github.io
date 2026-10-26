@@ -21,8 +21,9 @@ const USER_CONFIG = {
   photo:      "assets/portrait.jpeg",   // optional: path to your photo, e.g. "assets/photo.jpg"
 
   stats: [
+    { value: "4", label: "Labs"},
     { value: "10+",  label: "Projects" },
-    { value: "7", label: "Awards" }
+    { value: "9", label: "Awards" }
   ],
 
   links: {
@@ -52,15 +53,15 @@ const USER_CONFIG = {
     },
     {
       period:      "2026-Present",
-      role:        "Research Assistant",
-      institution: "CMU Security & AI Research Lab, PI: Taha Khan",
+      role:        "Graduate Research Assistant",
+      institution: "CMU Security & AI Research Lab",
       description: "Built a data pipeline for a VPN research project, analysing experiments across multiple providers and protocols to compare device power draw and network path behaviour with and without VPN encryption. Wrote the tooling end to end: experiment-quality validation, IP metadata enrichment for network attribution, and analysis scripts isolating the VPN-specific portion of each network path. Findings show VPN encryption substantially lengthens network paths and introduces additional network operators along the route, though much of the apparent overhead traces to the shared client-to-server segment rather than the VPN tunnel itself.",
       links:       {},
     },
     {
       period:      "2025",
-      role:        "Teaching Assistant",
-      institution: "UCLA Tech Commercialization, Prof: Nathan Wilson",
+      role:        "Undergraduate Teaching Assistant",
+      institution: "UCLA Tech Commercialization",
       description: "Supported students in understanding technology commercialization, intellectual property protection, and startup development. Facilitated student learning through practical case studies, class discussions, and guidance on applying course concepts to real-world business scenarios. Supported the instructor in fostering student engagement and developing critical thinking and analytical skills.",
       links:       {},
     },
@@ -73,14 +74,14 @@ const USER_CONFIG = {
     },
     {
       period:      "2024-2025",
-      role:        "Research Assistant",
-      institution: "UCLA Security & Privacy Lab, PI: Yuan Tian",
+      role:        "Undergraduate Research Assistant",
+      institution: "UCLA Security & Privacy Lab",
       description: "Studied 5 research papers on software security analysis & detection tools, virtual reality systems, and existing vulnerabilities. Analyzed 100+ source codes and libraries from Unity and Unreal Engine to find vulnerabilities and identify patterns. Created vulnerability detection software for virtual reality applications based on identified patterns from 100+ assets.",
       links:       {discussion_ppt: "assets/UCLA_research_litrev_ppt.pdf"},
     },
     {
       period:      "2024",
-      role:        "ThaiCERT Intern",
+      role:        "Thai CERT Intern",
       institution: "Ministry of Digital Economy and Society",
       description: "Investigated cybercrime activities using Group IB and wrote 20+ daily reports on activities and potential dangers. Drafted 4 weekly reports compiling 10k+ records separated by sectors, critical levels, and types of attacks. Translated 5+ articles related to cybersecurity from English to Thai, ensuring relevant information is preserved.",
       links:       {},
@@ -94,9 +95,16 @@ const USER_CONFIG = {
     },
     {
       period:      "2022",
-      role:        "Research Assistant",
-      institution: "Mahidol University, PI: Wittawat Kositwattanarerk",
+      role:        "Undergraduate Research Assistant",
+      institution: "Mahidol University",
       description: "Conducted research on technology of cryptocurrencies, markets, and issues such as 51% attack and impermanent loss. Analyzed uni-swap markets and phenomenon of impermanent loss across 5 exchange functions and policies. Developed equations, models, and regulations to minimize impermanent loss for liquidity providers",
+      links:       {},
+    },
+    {
+      period:      "2020",
+      role:        "Undergraduate Research Assistant",
+      institution: "University of California, Los Angeles",
+      description: "Conducted research on historical cases of illicit drug trafficking involving cryptocurrency and darknet marketplaces, including the Silk Road, to support efforts to understand and prevent cryptocurrency-facilitated drug dealing. Analyzed and synthesized findings from previous cases to identify relevant patterns, methods, and implications. Collaborated with the research team to prepare a survey research paper summarizing the findings for faculty review.",
       links:       {},
     },
   ],
@@ -109,6 +117,14 @@ const USER_CONFIG = {
       location: "Honda 99P Lab",
       desc:     "Built a company-strategy monitoring system for business analysts that continuously ingests SEC filings, investor-relations releases, and third-party news for a 24-company watchlist, then surfaces what is new and how credible it is. Architected a multi-source document pipeline that collects 15,000+ filings (~636M characters, FY1993–present) and ~113 news providers across 12 reliability tiers, using a resumable, rate-limit-compliant archive with automated quality auditing and time-ordered replay. Implemented a hierarchical Bayesian truth-discovery model that learns per-source credibility to arbitrate conflicting claims, exposed end-to-end through an MCP server with unified agent-trajectory tracing.",
       links:    { GitHub: "https://github.com/mcheung2-CMU/cmu-ini-fall-2026" },
+    },
+    {
+      date:     "2026",
+      name:     "Digital Forensics Investigation",
+      authors:  "Supavit Pitaknarongphorn, Abhi Nagalla, Pallavi Srivastava",
+      location: "CMU Cyber Forensics Capstone",
+      desc:     "Conducted a digital forensic investigation to reconstruct a simulated data exfiltration incident by examining disk images, email communications, system logs, and network artifacts. Used Autopsy, The Sleuth Kit, PeStudio, and custom Python scripts to analyze digital evidence, investigate malware activity, and correlate findings across multiple devices and systems. Collaborated with a team to document forensic procedures, maintain chain of custody, and produce a comprehensive incident report identifying evidence relevant to the incident timeline and suspected data leak.",
+      links:    { report: "assets/CMU_cyfir_report.pdf" },
     },
     {
       date:     "2026",
@@ -193,15 +209,68 @@ const USER_CONFIG = {
   ],
 
   news: [
-    { date: "2025.03", badge: "Award", text: "INI Fellowship", },
-    { date: "2025.03", badge: "New", text: "Admitted to CMU!", },
-    { date: "2025.03", badge: "Award", text: "Dean's Honors List", },
-    { date: "2024.12", badge: "Award", text: "Dean's Honors List", },
-    { date: "2024.08", badge: "Cert", text: "ISC2 Cybersecurity Certified", links: { pdf: "assets/ISC2_Cybersecurity_Certification.pdf" } },
-    { date: "2024.06", badge: "Award", text: "Dean's Honors List", },
-    { date: "2023.03", badge: "Award", text: "Dean's Honors List", },
-    { date: "2022.06", badge: "Award", text: "Dean's Honors List", },
-    { date: "2022.03", badge: "Award", text: "Dean's Honors List", },
-    { date: "2021.03", badge: "New", text: "Admitted to UCLA!", },
+    { 
+      date: "2025.03", 
+      badge: "Award", 
+      text: "INI Fellowship", 
+    },
+    { 
+      date: "2025.03", 
+      badge: "New", 
+      text: "Admitted to CMU!", 
+    },
+    { 
+      date: "2025.03", 
+      badge: "Award", 
+      text: "Dean's Honors List", 
+    },
+    { 
+      date: "2024.12", 
+      badge: "Award", 
+      text: "Dean's Honors List", 
+    },
+    { 
+      date: "2024.08", 
+      badge: "Cert", 
+      text: "ISC2 Cybersecurity Certified", 
+      links: { pdf: "assets/ISC2_Cybersecurity_Certification.pdf" } 
+    },
+    { 
+      date: "2024.06", 
+      badge: "Award", 
+      text: "Dean's Honors List", 
+    },
+    { 
+      date: "2023.03", 
+      badge: "Award", 
+      text: "Dean's Honors List", 
+    },
+    { 
+      date: "2022.06", 
+      badge: "Award", 
+      text: "Dean's Honors List", 
+    },
+    { 
+      date: "2022.03", 
+      badge: "Award", 
+      text: "Dean's Honors List", 
+    },
+    { 
+      date: "2021.03", 
+      badge: "New", 
+      text: "Admitted to UCLA!", 
+    },
+    { 
+      date: "2021.05", 
+      badge: "Award", 
+      text: "Top 20 RUsecure CTF Nationals", 
+      links: {} 
+    },
+    { 
+      date: "2019.03", 
+      badge: "Award", 
+      text: "2nd Place CyberPatriot Nationals Finals", 
+      links: { link: "https://troynjrotc.org/infosec2018-2019" } 
+    },
   ],
 };
